@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Strona tymczasowa - witryna jest w budowie.">
+  <title>Projekt w budowie</title>
+  <style>
+    :root {
+      /* EDYTUJ: Kolory */
+      --bg-1: #f7fafc;
+      --bg-2: #e6f4ff;
+      --card: #ffffff;
+      --text: #12263a;
+      --muted: #5f7387;
+      --accent: #0d8bff;
+      --accent-2: #00b894;
+      --ring: rgba(13, 139, 255, 0.25);
+      --shadow: 0 16px 40px rgba(18, 38, 58, 0.12);
+      --radius: 20px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(900px 500px at 10% -10%, #d8eeff 0%, transparent 60%),
+        radial-gradient(700px 420px at 90% 110%, #d9fff4 0%, transparent 60%),
+        linear-gradient(160deg, var(--bg-1), var(--bg-2));
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(26px);
+      opacity: 0.35;
+      z-index: 0;
+      pointer-events: none;
+      animation: float 10s ease-in-out infinite;
+    }
+
+    .blob.a { width: 220px; height: 220px; left: -40px; top: 10%; background: #79bfff; }
+    .blob.b { width: 260px; height: 260px; right: -70px; bottom: 10%; background: #73e6c4; animation-delay: 1.5s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-18px); }
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      width: min(92vw, 760px);
+      background: var(--card);
+      border: 1px solid #e8eff5;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(24px, 4vw, 42px);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #0d5ea8;
+      background: #eaf4ff;
+      border: 1px solid #cfe7ff;
+      padding: 8px 12px;
+      border-radius: 999px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-2);
+      box-shadow: 0 0 0 0 rgba(0, 184, 148, 0.6);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(0, 184, 148, 0.6); }
+      70% { box-shadow: 0 0 0 10px rgba(0, 184, 148, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 184, 148, 0); }
+    }
+
+    h1 {
+      margin: 18px 0 12px;
+      font-size: clamp(1.8rem, 4.5vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: 0.2px;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 2.2vw, 1.12rem);
+      line-height: 1.65;
+    }
+
+    .grid {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .item {
+      border: 1px solid #e8eff5;
+      border-radius: 14px;
+      padding: 12px 14px;
+      background: #fbfdff;
+      font-size: 0.96rem;
+      color: #274157;
+    }
+
+    .contact {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      text-decoration: none;
+      border: 1px solid #d7e6f5;
+      background: #fff;
+      color: #14324a;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      transition: 0.2s ease;
+    }
+
+    .btn:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px var(--ring);
+      transform: translateY(-1px);
+    }
+
+    .footer {
+      margin-top: 18px;
+      font-size: 0.82rem;
+      color: #6b7e90;
+    }
+
+    @media (max-width: 560px) {
+      .card { padding: 20px; }
+      .contact .btn { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="blob a"></div>
+  <div class="blob b"></div>
+
+  <main class="card">
+    <!-- EDYTUJ: Nazwa projektu -->
+    <div class="badge"><span class="dot"></span> PROJEKT: zaslepka</div>
+
+    <!-- EDYTUJ: Naglowek -->
+    <h1>Strona jest w budowie</h1>
+
+    <!-- EDYTUJ: Opis -->
+    <p>Pracujemy nad nowa wersja serwisu. Wroc wkrotce - przygotowujemy cos dobrego.</p>
+
+    <section class="grid" aria-label="Status">
+      <!-- EDYTUJ: Status prac -->
+      <div class="item"><strong>Status:</strong> aktywne prace projektowe i wdrozeniowe</div>
+      <!-- EDYTUJ: Data -->
+      <div class="item"><strong>Planowane uruchomienie:</strong> Q2 2026</div>
+    </section>
+
+    <div class="contact">
+      <!-- EDYTUJ: Kontakt -->
+      <a class="btn" href="mailto:kontakt@twojadomena.pl">kontakt@twojadomena.pl</a>
+      <a class="btn" href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a class="btn" href="https://x.com" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+    </div>
+
+    <div class="footer">© <span id="year"></span> zaslepka</div>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
