@@ -1,198 +1,273 @@
 <!doctype html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Strona tymczasowa - witryna jest w budowie.">
-  <title>Projekt w budowie</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>LUANS — w przebudowie</title>
   <style>
-    :root {
-      /* EDYTUJ: Kolory */
-      --bg-1: #f7fafc;
-      --bg-2: #e6f4ff;
-      --card: #ffffff;
-      --text: #12263a;
-      --muted: #5f7387;
-      --accent: #0d8bff;
-      --accent-2: #00b894;
-      --ring: rgba(13, 139, 255, 0.25);
-      --shadow: 0 16px 40px rgba(18, 38, 58, 0.12);
-      --radius: 20px;
+    :root{
+      /* Kolor z logo (dopasowany) */
+      --brand:#283080;
+      --brand-2:#1E2460;
+      --bg:#0B1026;
+      --card:#FFFFFF;
+      --text:#0E1220;
+      --muted:#5B647A;
+      --ring:rgba(40,48,128,.28);
     }
 
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Tahoma, sans-serif;
-      color: var(--text);
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      color:var(--text);
       background:
-        radial-gradient(900px 500px at 10% -10%, #d8eeff 0%, transparent 60%),
-        radial-gradient(700px 420px at 90% 110%, #d9fff4 0%, transparent 60%),
-        linear-gradient(160deg, var(--bg-1), var(--bg-2));
-      display: grid;
-      place-items: center;
-      overflow: hidden;
+        radial-gradient(1200px 800px at 20% 20%, rgba(40,48,128,.35), transparent 55%),
+        radial-gradient(900px 700px at 80% 70%, rgba(40,48,128,.18), transparent 60%),
+        linear-gradient(180deg, #070A16, var(--bg));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
     }
 
-    .blob {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(26px);
-      opacity: 0.35;
-      z-index: 0;
-      pointer-events: none;
-      animation: float 10s ease-in-out infinite;
+    .wrap{width:min(920px, 100%)}
+
+    .top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:16px;
     }
 
-    .blob.a { width: 220px; height: 220px; left: -40px; top: 10%; background: #79bfff; }
-    .blob.b { width: 260px; height: 260px; right: -70px; bottom: 10%; background: #73e6c4; animation-delay: 1.5s; }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-18px); }
+    .logo{
+      height:46px;
+      width:auto;
+      display:block;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,.25));
     }
 
-    .card {
-      position: relative;
-      z-index: 1;
-      width: min(92vw, 760px);
-      background: var(--card);
-      border: 1px solid #e8eff5;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: clamp(24px, 4vw, 42px);
+    .lang{
+      display:flex;
+      gap:8px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      padding:6px;
+      border-radius:999px;
+      backdrop-filter: blur(10px);
     }
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #0d5ea8;
-      background: #eaf4ff;
-      border: 1px solid #cfe7ff;
-      padding: 8px 12px;
-      border-radius: 999px;
+    .lang button{
+      appearance:none;
+      border:0;
+      background:transparent;
+      color:rgba(255,255,255,.86);
+      padding:8px 12px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:600;
+      letter-spacing:.2px;
     }
 
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent-2);
-      box-shadow: 0 0 0 0 rgba(0, 184, 148, 0.6);
-      animation: pulse 1.8s infinite;
+    .lang button[aria-pressed="true"]{
+      background:rgba(255,255,255,.16);
+      outline:2px solid rgba(255,255,255,.18);
+      outline-offset:0;
     }
 
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(0, 184, 148, 0.6); }
-      70% { box-shadow: 0 0 0 10px rgba(0, 184, 148, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(0, 184, 148, 0); }
+    .card{
+      background:rgba(255,255,255,.96);
+      border:1px solid rgba(255,255,255,.65);
+      border-radius:22px;
+      padding:28px;
+      box-shadow:
+        0 24px 80px rgba(0,0,0,.45),
+        0 2px 0 rgba(255,255,255,.55) inset;
     }
 
-    h1 {
-      margin: 18px 0 12px;
-      font-size: clamp(1.8rem, 4.5vw, 3rem);
-      line-height: 1.1;
-      letter-spacing: 0.2px;
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:999px;
+      background:rgba(40,48,128,.10);
+      color:var(--brand-2);
+      font-weight:700;
+      letter-spacing:.3px;
+      margin-bottom:14px;
     }
 
-    p {
-      margin: 0;
-      color: var(--muted);
-      font-size: clamp(1rem, 2.2vw, 1.12rem);
-      line-height: 1.65;
+    .dot{
+      width:10px;height:10px;border-radius:999px;
+      background:var(--brand);
+      box-shadow:0 0 0 6px rgba(40,48,128,.18);
     }
 
-    .grid {
-      margin-top: 24px;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
+    h1{margin:0 0 10px; font-size:clamp(26px, 3.2vw, 40px); line-height:1.1}
+    p{margin:0; font-size:clamp(15px, 1.6vw, 18px); line-height:1.55; color:var(--muted)}
+
+    .grid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
+      align-items:start;
     }
 
-    .item {
-      border: 1px solid #e8eff5;
-      border-radius: 14px;
-      padding: 12px 14px;
-      background: #fbfdff;
-      font-size: 0.96rem;
-      color: #274157;
+    .panel{
+      border-radius:16px;
+      border:1px solid rgba(15,18,32,.08);
+      background:#fff;
+      padding:16px;
     }
 
-    .contact {
-      margin-top: 22px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
+    .panel h2{
+      margin:0 0 8px;
+      font-size:14px;
+      color:var(--brand-2);
+      letter-spacing:.4px;
+      text-transform:uppercase;
     }
 
-    .btn {
-      text-decoration: none;
-      border: 1px solid #d7e6f5;
-      background: #fff;
-      color: #14324a;
-      padding: 10px 14px;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 0.92rem;
-      transition: 0.2s ease;
+    .panel ul{margin:0; padding-left:18px; color:var(--muted)}
+    .panel li{margin:6px 0}
+
+    .cta{
+      display:flex;
+      gap:10px;
+      margin-top:16px;
+      flex-wrap:wrap;
     }
 
-    .btn:hover {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 4px var(--ring);
-      transform: translateY(-1px);
+    .cta a{
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 14px;
+      border-radius:12px;
+      font-weight:700;
+      border:1px solid rgba(15,18,32,.10);
+      color:var(--brand-2);
+      background:#fff;
+      box-shadow:0 10px 22px rgba(0,0,0,.08);
     }
 
-    .footer {
-      margin-top: 18px;
-      font-size: 0.82rem;
-      color: #6b7e90;
+    .cta a.primary{
+      background:var(--brand);
+      color:#fff;
+      border-color:rgba(0,0,0,.08);
+      box-shadow:0 18px 38px rgba(40,48,128,.28);
     }
 
-    @media (max-width: 560px) {
-      .card { padding: 20px; }
-      .contact .btn { width: 100%; text-align: center; }
+    .footer{
+      margin-top:16px;
+      color:rgba(255,255,255,.70);
+      font-size:12px;
+      text-align:center;
+    }
+
+    .lang-block{display:none}
+    .lang-block.active{display:block}
+
+    @media (max-width: 720px){
+      .top{flex-direction:column; align-items:flex-start}
+      .grid{grid-template-columns:1fr}
+      .card{padding:20px}
     }
   </style>
 </head>
 <body>
-  <div class="blob a"></div>
-  <div class="blob b"></div>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo" alt="LUANS" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXwAAABRCAYAAADRoh2WAAABkm..." />
 
-  <main class="card">
-    <!-- EDYTUJ: Nazwa projektu -->
-    <div class="badge"><span class="dot"></span> PROJEKT: zaslepka</div>
-
-    <!-- EDYTUJ: Naglowek -->
-    <h1>Strona jest w budowie</h1>
-
-    <!-- EDYTUJ: Opis -->
-    <p>Pracujemy nad nowa wersja serwisu. Wroc wkrotce - przygotowujemy cos dobrego.</p>
-
-    <section class="grid" aria-label="Status">
-      <!-- EDYTUJ: Status prac -->
-      <div class="item"><strong>Status:</strong> aktywne prace projektowe i wdrozeniowe</div>
-      <!-- EDYTUJ: Data -->
-      <div class="item"><strong>Planowane uruchomienie:</strong> Q2 2026</div>
-    </section>
-
-    <div class="contact">
-      <!-- EDYTUJ: Kontakt -->
-      <a class="btn" href="mailto:kontakt@twojadomena.pl">kontakt@twojadomena.pl</a>
-      <a class="btn" href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a class="btn" href="https://x.com" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" id="btn-pl" aria-pressed="true">PL</button>
+        <button type="button" id="btn-en" aria-pressed="false">EN</button>
+      </div>
     </div>
 
-    <div class="footer">© <span id="year"></span> zaslepka</div>
-  </main>
+    <main class="card" role="main">
+      <div class="lang-block active" data-lang="pl">
+        <div class="badge"><span class="dot" aria-hidden="true"></span>STRONA W PRZEBUDOWIE</div>
+        <h1>Wracamy wkrótce.</h1>
+        <p>Pracujemy nad nową wersją serwisu. Dziękujemy za cierpliwość — strona będzie dostępna wkrótce.</p>
+
+        <div class="grid">
+          <section class="panel">
+            <h2>Co się dzieje</h2>
+            <ul>
+              <li>Odświeżamy wygląd i układ.</li>
+              <li>Porządkujemy treści i nawigację.</li>
+              <li>Poprawiamy wydajność i bezpieczeństwo.</li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <h2>Kontakt</h2>
+            <p style="margin:0;color:var(--muted)">Skontaktuj się z nami:</p>
+            <div class="cta">
+              <a class="primary" href="mailto:tomasz.kieszka@luans.pl">Napisz do nas</a>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="lang-block" data-lang="en">
+        <div class="badge"><span class="dot" aria-hidden="true"></span>SITE UNDER CONSTRUCTION</div>
+        <h1>We&apos;ll be back soon.</h1>
+        <p>We&apos;re working on a new version of our website. Thank you for your patience — the site will be available shortly.</p>
+
+        <div class="grid">
+          <section class="panel">
+            <h2>What&apos;s happening</h2>
+            <ul>
+              <li>Refreshing the design and layout.</li>
+              <li>Improving content structure and navigation.</li>
+              <li>Enhancing performance and security.</li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <h2>Contact</h2>
+            <p style="margin:0;color:var(--muted)">Get in touch with us:</p>
+            <div class="cta">
+              <a class="primary" href="mailto:tomasz.kieszka@luans.pl">Email us</a>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <div class="footer">© <span id="year"></span> LUANS</div>
+  </div>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    const btnPl = document.getElementById('btn-pl');
+    const btnEn = document.getElementById('btn-en');
+    const blocks = Array.from(document.querySelectorAll('.lang-block'));
+
+    function setLang(lang){
+      document.documentElement.lang = lang;
+      blocks.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+      btnPl.setAttribute('aria-pressed', String(lang === 'pl'));
+      btnEn.setAttribute('aria-pressed', String(lang === 'en'));
+      try { localStorage.setItem('lang', lang); } catch(e) {}
+    }
+
+    btnPl.addEventListener('click', () => setLang('pl'));
+    btnEn.addEventListener('click', () => setLang('en'));
+
+    const saved = (() => { try { return localStorage.getItem('lang'); } catch(e) { return null; } })();
+    const auto = (navigator.language || '').toLowerCase().startsWith('pl') ? 'pl' : 'en';
+    setLang(saved || auto);
+
+    document.getElementById('year').textContent = String(new Date().getFullYear());
   </script>
 </body>
 </html>
